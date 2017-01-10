@@ -1,111 +1,117 @@
 <div class="container">
-    <form name="form">
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input class="form-control" id="id" placeholder="ID" ng-model="$ctrl.coupon.id" ng-readonly="$ctrl.edit">
-        </div>
-        <div class="form-group">
-            <label for="duration">Duration *</label>
-            <select class="form-control" name="duration" id="duration" required
-                    ng-options="k as v for (k, v) in $ctrl.duration_options"
-                    ng-model="$ctrl.coupon.duration" ng-readonly="$ctrl.edit">
-                <option value="">Select a duration</option>
-            </select>
-        </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form name="form">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input class="form-control" id="id" placeholder="ID" ng-model="$ctrl.coupon.id"
+                           ng-readonly="$ctrl.edit">
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration *</label>
+                    <select class="form-control" name="duration" id="duration" required
+                            ng-options="k as v for (k, v) in $ctrl.duration_options"
+                            ng-model="$ctrl.coupon.duration" ng-readonly="$ctrl.edit">
+                        <option value="">Select a duration</option>
+                    </select>
+                </div>
 
-        <div class="form-group">
-            <label for="amount_off">Amount off</label>
-            <input class="form-control" id="amount_off" name="amount_off" type="number"
-                   ng-model="$ctrl.coupon.amount_off"
-                   ng-required="!$ctrl.coupon.percent_off" ng-readonly="$ctrl.edit">
-        </div>
+                <div class="form-group">
+                    <label for="amount_off">Amount off</label>
+                    <input class="form-control" id="amount_off" name="amount_off" type="number"
+                           ng-model="$ctrl.coupon.amount_off"
+                           ng-required="!$ctrl.coupon.percent_off" ng-readonly="$ctrl.edit">
+                </div>
 
-        <div class="form-group" ng-show="$ctrl.coupon.amount_off">
-            <label for="currency">Currency</label>
-            <input class="form-control" id="currency" name="currency" placeholder="Currency"
-                   ng-model="$ctrl.coupon.currency"
-                   ng-readonly="$ctrl.edit">
-        </div>
+                <div class="form-group" ng-show="$ctrl.coupon.amount_off">
+                    <label for="currency">Currency</label>
+                    <input class="form-control" id="currency" name="currency" placeholder="Currency"
+                           ng-model="$ctrl.coupon.currency"
+                           ng-readonly="$ctrl.edit">
+                </div>
 
-        <div class="form-group" ng-show="$ctrl.coupon.duration === 'repeating'">
-            <label for="duration_in_months">Duration in months</label>
-            <input class="form-control" id="duration_in_months" name="duration_in_months" type="number" min="0"
-                   ng-required="$ctrl.coupon.duration === 'repeating'"
-                   ng-model="$ctrl.coupon.duration_in_months" ng-readonly="$ctrl.edit">
-        </div>
+                <div class="form-group" ng-show="$ctrl.coupon.duration === 'repeating'">
+                    <label for="duration_in_months">Duration in months</label>
+                    <input class="form-control" id="duration_in_months" name="duration_in_months" type="number" min="0"
+                           ng-required="$ctrl.coupon.duration === 'repeating'"
+                           ng-model="$ctrl.coupon.duration_in_months" ng-readonly="$ctrl.edit">
+                </div>
 
-        <div class="form-group">
-            <label for="max_redemptions">Max redemptions</label>
-            <input class="form-control" id="max_redemptions" name="max_redemptions" type="number" min="0"
-                   ng-model="$ctrl.coupon.max_redemptions"
-                   ng-readonly="$ctrl.edit">
-        </div>
+                <div class="form-group">
+                    <label for="max_redemptions">Max redemptions</label>
+                    <input class="form-control" id="max_redemptions" name="max_redemptions" type="number" min="0"
+                           ng-model="$ctrl.coupon.max_redemptions"
+                           ng-readonly="$ctrl.edit">
+                </div>
 
-        <div class="form-group">
-            <label for="percent_off">Percent off</label>
-            <input class="form-control" id="percent_off" type="number" min="1" max="100"
-                   name="percent_off"
-                   ng-model="$ctrl.coupon.percent_off"
-                   ng-required="!$ctrl.coupon.amount_off" ng-readonly="$ctrl.edit">
-        </div>
+                <div class="form-group">
+                    <label for="percent_off">Percent off</label>
+                    <input class="form-control" id="percent_off" type="number" min="1" max="100"
+                           name="percent_off"
+                           ng-model="$ctrl.coupon.percent_off"
+                           ng-required="!$ctrl.coupon.amount_off" ng-readonly="$ctrl.edit">
+                </div>
 
-        <div class="form-group">
-            <label for="redeem_by">Redeem by</label>
-            <input class="form-control" id="redeem_by" name="redeem_by" type="date" ng-model="$ctrl.coupon.redeem_by"
-                   ng-readonly="$ctrl.edit">
-        </div>
-        <hr>
-        <div class="form-group">
-            <div class="row">
-                <span class="col-xs-4 control-label">Metadata</span>
-                <a class="col-xs-2 clickable" ng-click="$ctrl.addMetaData()">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
-            <hr>
-            <div class="row" ng-repeat="metadata in $ctrl.coupon.metadata | notNull">
-                <div class="col-xs-offset-1">
-                    <div class="form-group row">
-                        <div class="col-xs-5">
-                            <label>Key</label>
-                            <input class="form-control" ng-model="metadata.key" ng-readonly="!metadata.new">
-                        </div>
-                        <div class="col-xs-5">
-                            <label>Value</label>
-                            <input class="form-control" ng-model="metadata.value">
-                        </div>
-                        <div class="col-xs-2">
-                            <a class="clickable" ng-click="$ctrl.remove(metadata)">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </a>
+                <div class="form-group">
+                    <label for="redeem_by">Redeem by</label>
+                    <input class="form-control" id="redeem_by" name="redeem_by" type="date"
+                           ng-model="$ctrl.coupon.redeem_by"
+                           ng-readonly="$ctrl.edit">
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="row">
+                        <span class="col-xs-4 control-label">Metadata</span>
+                        <a class="col-xs-2 clickable" ng-click="$ctrl.addMetaData()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="row" ng-repeat="metadata in $ctrl.coupon.metadata | notNull">
+                        <div class="col-xs-offset-1">
+                            <div class="form-group row">
+                                <div class="col-xs-5">
+                                    <label>Key</label>
+                                    <input class="form-control" ng-model="metadata.key" ng-readonly="!metadata.new">
+                                </div>
+                                <div class="col-xs-5">
+                                    <label>Value</label>
+                                    <input class="form-control" ng-model="metadata.value">
+                                </div>
+                                <div class="col-xs-2">
+                                    <a class="clickable" ng-click="$ctrl.remove(metadata)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <a href="#!/" class="btn btn-default">Cancel</a>
+                        <input type="submit" value="Save" class="btn btn-default" ng-click="$ctrl.save()">
+                    </div>
+                </div>
+                <div class="text-danger" ng-show="form.$submitted">
+                    <div ng-messages="form.duration.$error">
+                        <div ng-message="required">Duration required</div>
+                    </div>
+                    <div ng-messages="form.percent_off.$error">
+                        <div ng-message="required">Percent off or amount off required</div>
+                        <div ng-message="min">Percent off must be positive</div>
+                        <div ng-message="max">Percent off must less than 100</div>
+                    </div>
+                    <div ng-messages="form.amount_off.$error">
+                        <div ng-message="min">Percent off must be positive</div>
+                    </div>
+                    <div ng-messages="form.duration_in_months.$error">
+                        <div ng-message="min">Duration in months must be positive</div>
+                        <div ng-message="required">Duration in months is required</div>
+                    </div>
+                    <div>{{ $ctrl.error }}</div>
+                </div>
+            </form>
         </div>
-        <div class="form-group row">
-            <div class="col-xs-12">
-                <a href="#!/" class="btn btn-default">Cancel</a>
-                <input type="submit" value="Save" class="btn btn-default" ng-click="$ctrl.save()">
-            </div>
-        </div>
-        <div class="text-danger" ng-show="form.$submitted">
-            <div ng-messages="form.duration.$error">
-                <div ng-message="required">Duration required</div>
-            </div>
-            <div ng-messages="form.percent_off.$error">
-                <div ng-message="required">Percent off or amount off required</div>
-                <div ng-message="min">Percent off must be positive</div>
-                <div ng-message="max">Percent off must less than 100</div>
-            </div>
-            <div ng-messages="form.amount_off.$error">
-                <div ng-message="min">Percent off must be positive</div>
-            </div>
-            <div ng-messages="form.duration_in_months.$error">
-                <div ng-message="min">Duration in months must be positive</div>
-                <div ng-message="required">Duration in months is required</div>
-            </div>
-            <div>{{ $ctrl.error }}</div>
-        </div>
-    </form>
+    </div>
 </div>
