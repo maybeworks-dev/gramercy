@@ -1,0 +1,9 @@
+import 'jquery';
+import 'bootstrap-sass';
+import '../css/app.scss';
+import './stripeApp.module';
+import './coupon/coupon.module';
+import './filters/filters.module';
+import 'angular-route';
+import 'angular-animate';
+import 'angular-utils-pagination';

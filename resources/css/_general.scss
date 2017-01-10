@@ -1,0 +1,25 @@
+table.table-centered {
+  td {
+    text-align: center;
+  }
+
+  th {
+    text-align: center;
+  }
+}
+
+.ng-enter {
+  animation-name:fadeIn;
+  animation-duration: .5s;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.scrollable-y {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  overflow-x: auto;
+}

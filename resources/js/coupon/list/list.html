@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-offset-1">
+            <a href="#!/coupon/" class="btn btn-default">Create new coupon</a>
+        </div>
+    </div>
+    <hr>
+    <div class="scrollable-y">
+        <table class="table table-striped table-centered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Amount off</th>
+                <th>Created at</th>
+                <th>Currency</th>
+                <th>Duration type</th>
+                <th>Duration in months</th>
+                <th>Max redemptions</th>
+                <th>Percent off</th>
+                <th>Redeem by</th>
+                <th>Times redeemed</th>
+                <th>Valid</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr dir-paginate="coupon in $ctrl.coupons | asArray | itemsPerPage: $ctrl.perPage" total-items="$ctrl.total"
+                current-page="$ctrl.page">
+                <td>{{ coupon.id }}</td>
+                <td>{{ coupon.amount_off }}</td>
+                <td>{{ coupon.created * 1000 | date : 'M/d/y' }}</td>
+                <td>{{ coupon.currency | uppercase }}</td>
+                <td>{{ coupon.duration }}</td>
+                <td>{{ coupon.duration_in_months }}</td>
+                <td>{{ coupon.max_redemptions }}</td>
+                <td>{{ coupon.percent_off }}</td>
+                <td><span ng-show="coupon.redeem_by">{{ coupon.redeem_by * 1000 | date : 'M/d/y' }}</span></td>
+                <td>{{ coupon.times_redeemed }}</td>
+                <td ng-bind-html="coupon.valid | check"></td>
+                <td>
+                    <a title="Edit" class="clickable" ng-click="$ctrl.update(coupon)"><span
+                            class="glyphicon glyphicon-pencil"></span></a>
+                    <a title="Remove" class="clickable" ng-click="$ctrl.remove(coupon)"><span
+                            class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <dir-pagination-controls on-page-change="$ctrl.getPage(newPageNumber)"></dir-pagination-controls>
+</div>
