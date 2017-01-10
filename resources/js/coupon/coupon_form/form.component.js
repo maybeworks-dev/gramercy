@@ -46,6 +46,10 @@ class Form {
         }
     }
 
+    cancel() {
+        this.$window.location = '#!/';
+    }
+
     remove(metadata) {
         metadata.value = null;
     }

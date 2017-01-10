@@ -87,10 +87,11 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="form-group row">
                     <div class="col-xs-12">
-                        <a href="#!/" class="btn btn-default">Cancel</a>
-                        <input type="submit" value="Save" class="btn btn-default" ng-click="$ctrl.save()">
+                        <button cpn-confirm-dialog="$ctrl.cancel()" class="btn btn-danger">Cancel</button>
+                        <input type="submit" value="Save" class="btn btn-primary" ng-click="$ctrl.save()">
                     </div>
                 </div>
                 <div class="text-danger" ng-show="form.$submitted">
