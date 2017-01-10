@@ -43,8 +43,9 @@
                         <td>
                             <a title="Edit" class="clickable" ng-click="$ctrl.update(coupon)"><span
                                     class="glyphicon glyphicon-pencil"></span></a>
-                            <a title="Remove" class="clickable" ng-click="$ctrl.remove(coupon)"><span
-                                    class="glyphicon glyphicon-remove" cpn-confirm-dialog="$ctrl.remove(coupon)"></span></a>
+                            <a title="Remove" class="clickable" cpn-confirm-dialog="$ctrl.remove(coupon)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
                         </td>
                     </tr>
                     </tbody>
