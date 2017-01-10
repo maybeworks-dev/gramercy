@@ -5,6 +5,7 @@ angular.module('stripeApp', [
     'ngRoute',
     'ngAnimate',
     'angularUtils.directives.dirPagination',
+    'directives',
     'coupon',
     'filters'
 ])

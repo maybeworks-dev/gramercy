@@ -3,7 +3,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-offset-1">
-                    <a href="#!/coupon/" class="btn btn-default">Create new coupon</a>
+                    <a href="#!/coupon/" class="btn btn-success">Create new coupon</a>
                 </div>
             </div>
             <hr>
@@ -44,7 +44,7 @@
                             <a title="Edit" class="clickable" ng-click="$ctrl.update(coupon)"><span
                                     class="glyphicon glyphicon-pencil"></span></a>
                             <a title="Remove" class="clickable" ng-click="$ctrl.remove(coupon)"><span
-                                    class="glyphicon glyphicon-remove"></span></a>
+                                    class="glyphicon glyphicon-remove" cpn-confirm-dialog="$ctrl.remove(coupon)"></span></a>
                         </td>
                     </tr>
                     </tbody>
