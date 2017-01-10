@@ -9,6 +9,7 @@ var handle_error = function (err, res) {
         .send(err);
 };
 
+/* GET paginated list of coupons. */
 router.get('/', function (req, res, next) {
     req.query.include = ['total_count'];
     stripe.coupons.list(
@@ -23,6 +24,7 @@ router.get('/', function (req, res, next) {
     );
 });
 
+/* GET specific coupon. */
 router.get('/:id', function (req, res, next) {
     stripe.coupons.retrieve(
         req.params.id,
@@ -37,6 +39,7 @@ router.get('/:id', function (req, res, next) {
     );
 });
 
+/* POST create new coupon. */
 router.post('/:id?', function (req, res, next) {
     try {
         stripe.coupons.create(req.body, function (err, coupon) {
@@ -51,6 +54,7 @@ router.post('/:id?', function (req, res, next) {
     }
 });
 
+/* PUT save edited coupon. */
 router.put('/:id', function (req, res, next) {
     try {
         console.log({metadata: req.body.metadata});
@@ -66,6 +70,7 @@ router.put('/:id', function (req, res, next) {
     }
 });
 
+/* DELETE delete an existing coupon. */
 router.delete('/', function (req, res, next) {
     stripe.coupons.del(req.query.id);
     res.send();
